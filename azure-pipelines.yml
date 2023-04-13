@@ -39,3 +39,10 @@ stages:
     - job: ProductionsJob
       steps:
       - bash: echo $(environment)ProdDeploy
+- task: Ant@1
+  inputs:
+    buildFile: 'build.xml'
+    options: 
+    publishJUnitResults: true
+    testResultsFiles: '**/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
